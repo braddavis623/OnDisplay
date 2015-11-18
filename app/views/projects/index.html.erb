@@ -27,7 +27,8 @@
          <tr>
             <td><%= project.name %></td>
             <td><%= link_to "Display Project", project.attachment_url %></td>
-            <td><%= button_to "Delete",  project, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{project.name}?" %></td>
+            <td><%= link_to "Delete",  project, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{project.name}?" %></td>
+            <td><%= link_to "Show", project, class: "btn btn-success" %></td>
          </tr>
          
       <% end %>
