@@ -1,25 +1,25 @@
 <p>
-  <strong>Project:</strong>
-  <%= @project.name %>
+  <h3><strong>Project:</strong></h3>
+  <h2><%= @project.name %></h2>
 </p>
  
-<h2>Comments</h2>
+<h4>Discussion section:</h4>
 <% @project.comments.each do |comment| %>
   <p>
-    <strong>Commenter:</strong>
-    <%= comment.commenter %>
+    <strong></strong>
+    <%= comment.commenter %> Says:
   </p>
  
   <p>
-    <strong>Comment:</strong>
+    <strong>-></strong>
     <%= comment.body %>
   </p>
 <% end %>
  
-<h2>Add a comment:</h2>
+<h5>Add a comment:</h5>
 <%= form_for([@project, @project.comments.build]) do |f| %>
   <p>
-    <%= f.label :commenter %><br>
+    <%= f.label :name %><br>
     <%= f.text_field :commenter %>
   </p>
   <p>
@@ -27,9 +27,9 @@
     <%= f.text_area :body %>
   </p>
   <p>
-    <%= f.submit %>
+    <%= f.submit 'save', class: "btn btn-success" %>
   </p>
 <% end %>
  
 <%= link_to 'home', root_url, class: "btn btn-default" %> |
-<%= link_to 'Back', projects_path %>
+<%= link_to 'Back', projects_path, class: "btn btn-default" %>
