@@ -1,16 +1,84 @@
 <!DOCTYPE html>
 <html>
-   
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+   <style>
+      #user_login{
+      padding:15px;
+      text-align:right;
+  }
+  
+  html,body {
+   margin:0;
+   padding:0px;
+   height:100%;
+}
+#container {
+   height:80%;
+}
+#header {
+   position:fixed;
+   background:#358ef2;
+   padding:10px;
+   width:100%;
+   top:0;
+}
+.full-height{
+    height:91%;
+}
+
+.center{
+  margin-left:10%;
+  width:80%;
+  padding:25px;
+  background:#50d868;
+  border-radius:25px;
+  margin-bottom:50px;
+  
+}
+
+
+   </style>
    <head>
       <title>Kevin Davis Senior Project</title>
       <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
       <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
       <%= csrf_meta_tags %>
    </head>
    
    <body>
-      <div class = "container" style = "padding-top:20px;">
-         <%= yield %>
+      <div class="navbar navbar-default navbar-static-top">
+        <div class="container" id="header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><font color="black">OnDisplay</font></a>
+          <div class="navbar-collapse collapse navbar-responsive-collapse">
+           
+
+              <!--The following adds signin/out/up functionality | Brad
+                  When loading each page, it checks if a user is
+                  logged in. If true, display signout link, if 
+                  false, display signin/signup links-->
+              <div id='user_login_strip'>
+                <div id='user_login'>
+                  <% if user_signed_in? %>
+                    Signed in as <%= current_user.email %>.
+                    <%= link_to 'sign out', destroy_user_session_path, :method => :delete %>
+                  <% else %>
+                    <%= link_to 'sign up', new_user_registration_path %> or <%= link_to 'sign in', new_user_session_path %>
+                  <% end %>
+                </div>
+                <!-- yield code removed from this location -->
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class='center'>
+          <%= yield %>
       </div>
    </body>
 
